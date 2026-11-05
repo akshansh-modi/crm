@@ -1,7 +1,7 @@
 <!--
   crm-desk patch, see PATCHES.md
   Customer 360: a summary card for a sidebar plus a full "360 view" dialog.
-  Data: insurance.api.get_customer_360 (apps/insurance). The same file lives in
+  Data: beacon.api.get_customer_360 (apps/beacon). The same file lives in
   apps/helpdesk/desk/src/components/ and apps/crm/frontend/src/components/: keep them identical.
 -->
 <template>
@@ -427,7 +427,7 @@ const emiPolicy = ref("")
 // erroring on every ticket/deal. Defining onError also keeps the app's global error toast quiet.
 const unavailable = ref(false)
 const c360 = createResource({
-  url: "insurance.api.get_customer_360",
+  url: "beacon.api.get_customer_360",
   makeParams: () => ({ contact: props.contact || undefined, email: props.email || undefined }),
   onError(error) {
     if (/not installed/i.test(JSON.stringify(error?.messages || error?.message || ""))) unavailable.value = true
